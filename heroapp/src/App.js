@@ -8,6 +8,8 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import AllHeroesList from './components/AllHeroesList/AllHeroesList';
 import LikedHeroesList from './components/LikedHeroesList/LikedHeroesList';
 import normalizeData from './normalizeData';

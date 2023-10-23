@@ -11,7 +11,8 @@ export default function normalizeData (data) {
             publisher: hero.biography.publisher,
             occupation: hero.work.occupation,
             image: hero.images.md,
-            powers: hero.powerstats
+            powers: hero.powerstats,
+            liked: false
         } 
     });
 }
