@@ -13,6 +13,7 @@ import LikedHeroesList from './components/LikedHeroesList/LikedHeroesList';
 import normalizeData from './normalizeData';
 
 const data = await axios.get("https://akabab.github.io/superhero-api/api/all.json");
+console.log(data.data);
 console.log(normalizeData(data.data));
 
 function App() {

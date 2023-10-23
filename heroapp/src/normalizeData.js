@@ -9,6 +9,7 @@ export default function normalizeData (data) {
             name: hero.name,
             alterEgos: hero.biography.fullName,
             publisher: hero.biography.publisher,
+            occupation: hero.work.occupation,
             image: hero.images.md,
             powers: hero.powerstats
         } 
