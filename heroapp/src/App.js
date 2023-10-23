@@ -1,5 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
+import axios from 'axios';
+import _ from 'lodash';
 import {
   BrowserRouter as Router,
   Routes,
@@ -8,8 +10,13 @@ import {
 } from "react-router-dom";
 import AllHeroesList from './components/AllHeroesList/AllHeroesList';
 import LikedHeroesList from './components/LikedHeroesList/LikedHeroesList';
+import normalizeData from './normalizeData';
+
+const data = await axios.get("https://akabab.github.io/superhero-api/api/all.json");
+console.log(normalizeData(data.data));
 
 function App() {
+
   return (
     <Router>
       <div className="App">
