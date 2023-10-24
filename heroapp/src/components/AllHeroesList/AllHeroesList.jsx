@@ -1,16 +1,9 @@
 import { connect } from 'react-redux';
 import { getHeroes, getBoolFetching, getAllHeroes } from "../../redux/allHeroes-reducer";
 import { useEffect } from 'react';
-import Card from "../Card/Card"
+import Card from "../Card/Card";
+import Img from '../Img/Img';
 
-{/* <Card>
-    <Card.Body>
-      <Card.Title>Title</Card.Title>
-      <Card.Text>Text</Card.Text>
-    </Card.Body>
-  </Card> */}
-
-// 
 //props.heroes[0]?.name
 
 function AllHeroesList (props) {
@@ -20,20 +13,21 @@ function AllHeroesList (props) {
     }, [])
 
     return (<div className="allHeroesList">
-        {console.log(props.heroes.map((hero)=> {
-            return (<Card>
+        {console.log(props.heroes)}
+        {props.isFetching ? <>Loader</>:<ul className="allHeroesList__cardsWrap">{props.heroes.map((hero)=> {
+            return (<Card key={hero.id}>
                 <Card.Body>
-                    <Card.Name>{hero.name}</Card.Name>
-                    <Card.Universe>{hero.universe}</Card.Universe>
+                    <Card.Name>Name: {hero.name}</Card.Name>
+                    {hero.biography.fullName === ""? null : <Card.FullName>Full name: {hero.biography.fullName}</Card.FullName>}
+                    {hero.work.occupation === "-"? null : <Card.Occupation>Occupation: {hero.work.occupation}</Card.Occupation>}
+                    <Card.Img>
+                        <Img src={hero.images.md} alt={hero.name}></Img>
+                    </Card.Img>
                 </Card.Body>
-            </Card>)
-        }))}
-        {props.isFetching ? <>Loader</>:<ul>{props.heroes.map((hero)=> {
-            return (<Card>
-                <Card.Body>
-                    <Card.Name>{hero.name}</Card.Name>
-                    <Card.Universe>{hero.universe}</Card.Universe>
-                </Card.Body>
+                <Card.ButtonsWrap>
+                    <Card.Like isFavorite={hero.isFavorite}></Card.Like>
+                    <Card.DeleteBtn></Card.DeleteBtn>
+                </Card.ButtonsWrap>
             </Card>)
         })}</ul>}
     </div>)
@@ -45,4 +39,5 @@ let mapStateToProps = (state) => {
     isFetching: getBoolFetching(state),
     }
 };
+
 export default connect(mapStateToProps, { getHeroes })(AllHeroesList);

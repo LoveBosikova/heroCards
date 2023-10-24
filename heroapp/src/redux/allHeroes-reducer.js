@@ -46,6 +46,20 @@ export const setHeroes = (heroes) => {
   }
 }
 
+export const likeHero = (id) => {
+  return {
+    type: HERO__LIKE,
+    id
+  }
+}
+
+export const dislikeHero = (id) => {
+  return {
+    type: HERO__DISLIKE,
+    id
+  }
+}
+
 export const setIsFetching = (isFetching) => {
   return {
     type: TOGGLE_IS_FETCHING,
