@@ -46,7 +46,7 @@ export const setHeroes = (heroes) => {
   }
 }
 
-export const likeHero = (id) => {
+export const setLikeHero = (id) => {
   return {
     type: HERO__LIKE,
     id

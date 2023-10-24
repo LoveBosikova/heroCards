@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getHeroes, getBoolFetching, getAllHeroes } from "../../redux/allHeroes-reducer";
+import { getHeroes, getBoolFetching, getAllHeroes, likeHero } from "../../redux/allHeroes-reducer";
 import { useEffect } from 'react';
 import Card from "../Card/Card";
 import Img from '../Img/Img';
@@ -12,8 +12,10 @@ function AllHeroesList (props) {
         props.getHeroes()
     }, [])
 
+
+
     return (<div className="allHeroesList">
-        {console.log(props.heroes)}
+        {console.log(likeHero(1))}
         {props.isFetching ? <>Loader</>:<ul className="allHeroesList__cardsWrap">{props.heroes.map((hero)=> {
             return (<Card key={hero.id}>
                 <Card.Body>
