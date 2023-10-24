@@ -12,7 +12,7 @@ export default function normalizeData (data) {
             occupation: hero.work.occupation,
             image: hero.images.md,
             powers: hero.powerstats,
-            liked: false
+            isFavorite: false
         } 
     });
 }

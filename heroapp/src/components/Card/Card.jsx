@@ -1,3 +1,7 @@
+import React from 'react';
+
+const Body = (props) => <div className="card__body">{props.children}</div>;
+
 const Name = (props) => <h2 className="card__name">{props.children}</h2>;
 
 const Universe = (props) => <p className="card__universe">{props.children}</p>;
@@ -14,6 +18,7 @@ export default class Card extends React.Component {
         super(props);
     }
 
+    static Body = Body;
     static Name = Name;
     static Universe = Universe;
     static AlterEgo = AlterEgo;
@@ -23,7 +28,7 @@ export default class Card extends React.Component {
 
     render() {
         return (
-        <div className="card">{this.props.children}</div>
+        <li className="card">{this.props.children}</li>
         )    
     }
 }
