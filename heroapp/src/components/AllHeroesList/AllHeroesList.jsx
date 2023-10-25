@@ -1,11 +1,8 @@
 import { connect, useDispatch } from 'react-redux';
-import { getHeroes, getBoolFetching, getAllHeroes, setLikeHero } from "../../redux/allHeroes-reducer";
+import { getHeroes, getBoolFetching, getAllHeroes, likeHero, dislikeHero, deleteHero } from "../../redux/allHeroes-reducer";
 import { useEffect } from 'react';
 import Card from "../Card/Card";
 import Img from '../Img/Img';
-import store from '../../redux/redux-store';
-
-//props.heroes[0]?.name
 
 function AllHeroesList (props) {
 
@@ -13,7 +10,7 @@ function AllHeroesList (props) {
         props.getHeroes()
     }, [])
 
-    // {store.dispatch(setLikeHero(1))}
+    const dispatch = useDispatch();
 
     return (<div className="allHeroesList">
         {props.isFetching ? <>Loader</>:<ul className="allHeroesList__cardsWrap">{props.heroes.map((hero)=> {
@@ -27,8 +24,8 @@ function AllHeroesList (props) {
                     </Card.Img>
                 </Card.Body>
                 <Card.ButtonsWrap>
-                    <Card.Like isFavorite={hero.isFavorite}></Card.Like>
-                    <Card.DeleteBtn></Card.DeleteBtn>
+                    {hero.isFavorite === true ? <Card.FullLike onClick={() => dispatch(dislikeHero(hero.id))}></Card.FullLike> : <Card.EmptyLike onClick={() => dispatch(likeHero(hero.id))}></Card.EmptyLike>}
+                    <Card.DeleteBtn onClick={() => dispatch(deleteHero(hero.id))}></Card.DeleteBtn>
                 </Card.ButtonsWrap>
             </Card>)
         })}</ul>}

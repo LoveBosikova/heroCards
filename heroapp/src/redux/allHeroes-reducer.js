@@ -1,4 +1,5 @@
-import { heroApi } from '../api/api'
+import { heroApi } from '../api/api';
+import { connect, useDispatch } from 'react-redux';
 import { updateObjectInArray } from "../utils/object-helper";
 
 const SET_HEROES = 'SET_HEROES';
@@ -27,12 +28,12 @@ const heroesReducer = (state = ininitializeState, action) => {
     case HERO__DISLIKE: {
       return {
         ...state,
-        heroes: updateObjectInArray(state.heroes, action.heroId, "id", { isFavorite: false })
+        heroes: updateObjectInArray(state.heroes, action.id, "id", { isFavorite: false })
 
       };
     }
     case HERO__DELETE: {
-      return { ...state, heroes: updateObjectInArray(state.heroes, action.heroId, "id", {}, true) }
+      return { ...state, heroes: updateObjectInArray(state.heroes, action.id, "id", {}, true) }
     }
 
     default:
@@ -54,17 +55,43 @@ export const setLikeHero = (id) => {
   }
 }
 
-export const dislikeHero = (id) => {
+export const likeHero = (id) => {
+  return (dispatch) => {
+    dispatch(setLikeHero(id));
+  }
+}
+
+export const setDislikeHero = (id) => {
   return {
     type: HERO__DISLIKE,
     id
   }
 }
 
+export const dislikeHero = (id) => {
+  return (dispatch) => {
+    dispatch(setDislikeHero(id));
+  }
+}
+
+
 export const setIsFetching = (isFetching) => {
   return {
     type: TOGGLE_IS_FETCHING,
     isFetching: isFetching
+  }
+}
+
+export const setDeleteHero = (id) => {
+  return {
+    type: HERO__DELETE,
+    id
+  }
+}
+
+export const deleteHero = (id) => {
+  return (dispatch) => {
+    dispatch(setDeleteHero(id));
   }
 }
 

@@ -22,7 +22,7 @@ function App() {
           <p className='App__subtitle'>Like uor favorites, delete your hatred</p>
           <button><Link to="/likedheroes">Look my favorite heroes</Link></button>
           <Routes>
-            <Route path="/" element={<AllHeroesList />} />
+            <Route path="/heroCards" element={<AllHeroesList />} />
             <Route path="/likedheroes" element={<LikedHeroesList />} />
           </Routes>
         </div>

@@ -16,7 +16,7 @@ const HeroProgressBar = (props) => <div className="card__progressBar">{props.chi
 
 const ButtonsWrap = (props) => <div className="card__btnsWrap">{props.children}</div>; 
 
-const Like = (props) => {
+const EmptyLike = (props) => {
 
     const emptyLikeSvg = <svg fill="#000000" height="40px" width="40px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" 
         viewBox="0 0 51.997 51.997" xmlSpace="preserve">
@@ -30,8 +30,14 @@ const Like = (props) => {
             c6.351,0,11.433,5.313,12.096,12.727C49.938,16.57,50.229,18.264,49.521,21.261z"/>
             </g>
         </svg>
+    return (
+        <button className="card__likeWrap" onClick={props.onClick}>{emptyLikeSvg}</button>
+    )
+} 
 
-    const fullLikeSvg = <svg fill="#FF0000" height="30px" width="30px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" 
+
+const FullLike = (props) => {
+    const fullLikeSvg = <svg fill="#FF0000" height="40px" width="40px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" 
         viewBox="0 0 51.997 51.997" xmlSpace="preserve">
         <g>
             <path d="M51.911,16.242C51.152,7.888,45.239,1.827,37.839,1.827c-4.93,0-9.444,2.653-11.984,6.905
@@ -43,13 +49,12 @@ const Like = (props) => {
             c6.351,0,11.433,5.313,12.096,12.727C49.938,16.57,50.229,18.264,49.521,21.261z"/>
         </g>
     </svg>
-
     return (
-        <button className="card__likeWrap">{props.isFavorite ?  fullLikeSvg : emptyLikeSvg}</button>
+        <button className="card__likeWrap" onClick={props.onClick}>{fullLikeSvg}</button>
     )
 } 
 
-const DeleteBtn = (props) => <button className="card__deleteWrap">
+const DeleteBtn = (props) => <button className="card__deleteWrap" onClick={props.onClick}>
     <svg className="card__delete" width="40px" height="40px" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M960 160h-291.2a160 160 0 0 0-313.6 0H64a32 32 0 0 0 0 64h896a32 32 0 0 0 0-64zM512 96a96 96 0 0 1 90.24 64h-180.48A96 96 0 0 1 512 96zM844.16 290.56a32 32 0 0 0-34.88 6.72A32 32 0 0 0 800 320a32 32 0 1 0 64 0 33.6 33.6 0 0 0-9.28-22.72 32 32 0 0 0-10.56-6.72zM832 416a32 32 0 0 0-32 32v96a32 32 0 0 0 64 0v-96a32 32 0 0 0-32-32zM832 640a32 32 0 0 0-32 32v224a32 32 0 0 1-32 32H256a32 32 0 0 1-32-32V320a32 32 0 0 0-64 0v576a96 96 0 0 0 96 96h512a96 96 0 0 0 96-96v-224a32 32 0 0 0-32-32z" fill="#231815" /><path d="M384 768V352a32 32 0 0 0-64 0v416a32 32 0 0 0 64 0zM544 768V352a32 32 0 0 0-64 0v416a32 32 0 0 0 64 0zM704 768V352a32 32 0 0 0-64 0v416a32 32 0 0 0 64 0z" fill="#231815" /></svg>
 </button>;
 
@@ -66,7 +71,8 @@ export default class Card extends React.Component {
     static Img = Img;
     static HeroProgressBar = HeroProgressBar;
     static ButtonsWrap = ButtonsWrap;
-    static Like = Like;
+    static EmptyLike = EmptyLike;
+    static FullLike = FullLike;
     static DeleteBtn = DeleteBtn;
 
     render() {
