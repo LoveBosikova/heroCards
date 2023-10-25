@@ -9,6 +9,7 @@ const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
 
 let ininitializeState = {
   heroes: [],
+  likedHeroesId: [],
   isFetching: false,
 };
 
@@ -20,7 +21,7 @@ const heroesReducer = (state = ininitializeState, action) => {
     case HERO__LIKE: {
       return {
         ...state,
-        heroes: updateObjectInArray(state.heroes, action.heroId, "id", { isFavorite: true })
+        heroes: updateObjectInArray(state.heroes, action.id, "id", { isFavorite: true })
       };
     }
     case HERO__DISLIKE: {
