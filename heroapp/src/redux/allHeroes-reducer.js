@@ -6,10 +6,11 @@ const HERO__DELETE = 'HERO__DELETE';
 const HERO__LIKE = 'HERO__LIKE';
 const HERO__DISLIKE = 'HERO__DISLIKE';
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
+const SHOW__ALL = 'SHOW__ALL';
+const SHOW__LIKED = 'SHOW__LIKED';
 
 let ininitializeState = {
   heroes: [],
-  likedHeroesId: [],
   isFetching: false,
 };
 

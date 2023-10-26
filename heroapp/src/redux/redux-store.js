@@ -1,9 +1,11 @@
 import { applyMiddleware, combineReducers, compose, legacy_createStore as createStore } from 'redux';
 import heroesReducer from './allHeroes-reducer';
+import UIReducer from './UI-reducer';
 import thunkMiddleWare from 'redux-thunk';
 
 let reducers = combineReducers({
-  heroes: heroesReducer
+  heroes: heroesReducer,
+  UI: UIReducer
 })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

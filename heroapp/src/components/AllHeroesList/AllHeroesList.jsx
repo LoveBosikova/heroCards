@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import Card from "../Card/Card";
 import Img from '../Img/Img';
 import styles from './allheroeslist.scss'
+import Loader from '../Loader/Loader';
 
 function AllHeroesList (props) {
 
@@ -14,7 +15,7 @@ function AllHeroesList (props) {
     const dispatch = useDispatch();
 
     return (<div className="allHeroesList">
-        {props.isFetching ? <>Loader</>:<ul className="allHeroesList__cardsWrap">{props.heroes.map((hero)=> {
+        {props.isFetching ? <Loader /> : <ul className="allHeroesList__cardsWrap">{props.heroes.map((hero)=> {
             return (<Card key={hero.id}>
                 <Card.Body>
                     <Card.Name>Name: {hero.name}</Card.Name>
