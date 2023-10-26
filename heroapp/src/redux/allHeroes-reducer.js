@@ -1,5 +1,4 @@
 import { heroApi } from '../api/api';
-import { connect, useDispatch } from 'react-redux';
 import { updateObjectInArray } from "../utils/object-helper";
 
 const SET_HEROES = 'SET_HEROES';
@@ -16,24 +15,33 @@ let ininitializeState = {
 
 const heroesReducer = (state = ininitializeState, action) => {
   switch (action.type) {
+
     case SET_HEROES: {
       return { ...state, heroes: action.heroes }
     }
+
     case HERO__LIKE: {
-      return {
+      const newState = {
         ...state,
         heroes: updateObjectInArray(state.heroes, action.id, "id", { isFavorite: true })
-      };
+      }
+      localStorage.setItem('heroes', JSON.stringify(newState.heroes));
+      return newState;
     }
+
     case HERO__DISLIKE: {
-      return {
+      const newState = {
         ...state,
         heroes: updateObjectInArray(state.heroes, action.id, "id", { isFavorite: false })
-
-      };
+      }
+      localStorage.setItem('heroes', JSON.stringify(newState.heroes));
+      return newState;
     }
+
     case HERO__DELETE: {
-      return { ...state, heroes: updateObjectInArray(state.heroes, action.id, "id", {}, true) }
+      const newState = { ...state, heroes: state.heroes.filter(({id}) => id !== action.id) }
+      localStorage.setItem('heroes', JSON.stringify(newState.heroes));
+      return newState;
     }
 
     default:
@@ -74,7 +82,6 @@ export const dislikeHero = (id) => {
   }
 }
 
-
 export const setIsFetching = (isFetching) => {
   return {
     type: TOGGLE_IS_FETCHING,
@@ -98,8 +105,13 @@ export const deleteHero = (id) => {
 export const getHeroes = () => {
   return async (dispatch) => {
     dispatch(setIsFetching(true));
-    const data = await heroApi.getHeroes()
-    dispatch(setHeroes(data));
+    if (localStorage.getItem('heroes') === null) {
+      const data = await heroApi.getHeroes();
+      localStorage.setItem('heroes', JSON.stringify(data));
+      dispatch(setHeroes(data));
+    } else {
+      dispatch(setHeroes(JSON.parse(localStorage.getItem('heroes'))));
+    }
     dispatch(setIsFetching(false));
   }
 }
