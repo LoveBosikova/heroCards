@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/heroCards/static/css/main.3bca327e.css",
-    "main.js": "/heroCards/static/js/main.e12bc581.js",
+    "main.css": "/heroCards/static/css/main.d58510d2.css",
+    "main.js": "/heroCards/static/js/main.80e8fe1d.js",
     "static/js/787.f5ab3aa3.chunk.js": "/heroCards/static/js/787.f5ab3aa3.chunk.js",
     "index.html": "/heroCards/index.html",
-    "main.3bca327e.css.map": "/heroCards/static/css/main.3bca327e.css.map",
-    "main.e12bc581.js.map": "/heroCards/static/js/main.e12bc581.js.map",
+    "main.d58510d2.css.map": "/heroCards/static/css/main.d58510d2.css.map",
+    "main.80e8fe1d.js.map": "/heroCards/static/js/main.80e8fe1d.js.map",
     "787.f5ab3aa3.chunk.js.map": "/heroCards/static/js/787.f5ab3aa3.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3bca327e.css",
-    "static/js/main.e12bc581.js"
+    "static/css/main.d58510d2.css",
+    "static/js/main.80e8fe1d.js"
   ]
 }
