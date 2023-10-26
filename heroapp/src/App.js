@@ -19,8 +19,8 @@ function App() {
       <Provider store={store} >
         <div className="App">
           <h1 className='App__title'>HeroLike</h1>
-          <p className='App__subtitle'>Like uor favorites, delete your hatred</p>
-          <button><Link to="/likedheroes">Look my favorite heroes</Link></button>
+          <p className='App__subtitle'>Like your favorites, delete your hatred</p>
+          <button className='App__btn'><Link className='App__link' to="/likedheroes">Look my favorite heroes</Link></button>
           <Routes>
             <Route path="/heroCards" element={<AllHeroesList />} />
             <Route path="/likedheroes" element={<LikedHeroesList />} />

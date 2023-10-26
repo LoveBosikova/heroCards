@@ -1,0 +1,61 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content:  space-between;
+    width: 25.5vw;
+    max-width: 25.5vw;
+    padding: .3rem;
+    margin-bottom: 6rem;
+    border: 1px solid rgb(16, 16, 52);
+    border-radius: 1rem;
+    box-shadow: 1px 5px 5px 6px rgb(16, 16, 52), 0 0 0 5px rgb(16, 16, 52);
+
+    @media (max-width:900px) {
+        width: 40vw;
+        max-width: 40vw;
+    }
+    
+    @media (max-width:900px) {
+        width: 90vw;
+        max-width: 90vw;
+    }
+
+    &__name {
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        font-family: 'Russo One', sans-serif; 
+        text-align: center;
+        font-size: 2rem;
+    }
+
+    &__fullname, &__fullname, &__occupation {
+        text-align: left;
+        font-family: 'Geologica', sans-serif;
+        font-weight: 300;
+        font-size: 1.25rem;
+        margin-left: 1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    &__imgWrap {
+        max-height: 60vh;
+        overflow: hidden;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    &__btnsWrap {
+        display: flex;
+        justify-content: space-evenly;
+        margin-bottom: 1.5rem;
+    }
+
+    &__likeWrap>svg:hover,
+    &__deleteWrap>svg:hover {
+        transform: scale(1.1);
+    }
+
+    &:hover {
+        transform: scale(1.05);
+    }
+}

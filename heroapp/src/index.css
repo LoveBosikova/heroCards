@@ -1,6 +1,7 @@
 * {
     font-family: 'Geologica', sans-serif;
     font-weight: 300;
+    transition: .3s ease;
 }
 
 body {
@@ -50,6 +51,8 @@ body {
 ol, ul {
     list-style: none;
 }
+
+button { all: unset; } 
 
 ul
 {

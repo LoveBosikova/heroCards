@@ -3,6 +3,7 @@ import { getHeroes, getBoolFetching, getAllHeroes, likeHero, dislikeHero, delete
 import { useEffect } from 'react';
 import Card from "../Card/Card";
 import Img from '../Img/Img';
+import styles from './allheroeslist.scss'
 
 function AllHeroesList (props) {
 
